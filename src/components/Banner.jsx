@@ -41,7 +41,7 @@ const nextSlide =()=> {
               src={data[1]}
               alt="playstation"
             />
-            <div className="absolute  w-96 h-min shadow-2xl h-full bottom-24 right-16  p-1 ">
+            <div className="absolute  w-96 h-min shadow-2xl h-full top-14 right-[663px]  p-1 ">
               <p className="text-black font-bodyFont font-extrabold  text-xl ">
               "Experience movie magic like never before—discover unbeatable deals on home theater systems today!"
               </p>

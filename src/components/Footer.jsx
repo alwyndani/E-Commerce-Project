@@ -8,10 +8,12 @@ import {
   FaYoutube,
   FaTwitter,
 } from "react-icons/fa6";
-import { MdAccountCircle, MdSpatialTracking, MdContactSupport} from "react-icons/md";
+import {
+  MdAccountCircle,
+  MdSpatialTracking,
+  MdContactSupport,
+} from "react-icons/md";
 import { IoBagCheckOutline } from "react-icons/io5";
-
-
 
 export const Footer = () => {
   return (
@@ -29,10 +31,10 @@ export const Footer = () => {
             <FaInstagram className="hover:text-white duration-300 cursor-pointer" />
           </div>
         </div>
-        
+
         <div>
           <h2 className="text-2xl font-semibold text-white mb-4">Locate Us</h2>
-          <div className="text-base flex flex-col gap-1">
+          <div className="text-base flex flex-col gap-2">
             <p>Byculla, Mumbai, Maharashtra, India</p>
             <p>Mobile: 02296 54658812</p>
             <p>Phone: 02296 25898559</p>
@@ -41,7 +43,42 @@ export const Footer = () => {
         </div>
 
         <div>
-        <h2 className="text-2xl font-semibold text-white mb-4">Profile</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">Profile</h2>
+          <div className="text-base flex flex-col gap-2">
+            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+              {" "}
+              <span>
+                <IoBagCheckOutline />
+              </span>{" "}
+              My account
+            </p>
+            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+              {" "}
+              <span>
+                <MdAccountCircle />
+              </span>
+              Checkout
+            </p>
+            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+              {" "}
+              <span>
+                <MdSpatialTracking />
+              </span>
+              Order Tracking
+            </p>
+            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+              {" "}
+              <span>
+                <MdContactSupport />
+              </span>{" "}
+              Help $ Support
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center">
+          <input className="bg-transparent border px-4 py-2 text-sm" placeholder="Enter Your Email" type="text"/>
+          <button className="text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-black py-1">Subscribe</button>
         </div>
       </div>
     </div>
