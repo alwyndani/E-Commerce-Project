@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import { Home } from "./pages/Home";
 import { Cart } from "./pages/Cart";
 import Product from "./components/Product";
+ 
 
 function App() {
 

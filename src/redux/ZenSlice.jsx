@@ -10,8 +10,15 @@ export const zenSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            state.productData = action.payload;
-        }
+            const item = state.productData.find(
+                (item) => item._id === action.payload._id
+            )
+            if (item) {
+                item.Quantity += action.payload.Quantity
+            }
+            else {
+            state.productData.push(action.payload);
+        }}
     }
 });
 

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MdOutlineStar } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/ZenSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Product = () => {
+
+  const dispatch = useDispatch();
   const [details, setDetails] = useState({});
+  const [baseQty, setBaseQty] = useState(1);
 
   const location = useLocation();
   useEffect(() => {
@@ -47,12 +53,20 @@ const Product = () => {
             <div className="w-52 flex items-center justify-between text-gray-500 gap-4 border p-3">
               <p className="text-sm">Quantity</p>
               <div className="flex items-center gap-4 text-sm font-semibold">
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">-</button>
-                <span>{1}</span>
-                <button className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">+</button>
+                <button onClick={()=> setBaseQty(baseQty === 1 ? 1 : baseQty - 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">-</button>
+                <span>{baseQty}</span>
+                <button onClick={()=> setBaseQty(baseQty + 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">+</button>
               </div>
             </div>
-            <button className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to Cart</button>
+            <button onClick={()=> dispatch ( addToCart({
+              _id: details._id,
+              title: details.title,
+              image: details.image, 
+              price: details.newPrice,
+              Quantity: baseQty,
+              description: details.description
+            })
+            ) & toast.success(`${details.title.substring(0,25)}...   is added to the cart`) } className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -60,6 +74,18 @@ const Product = () => {
         <h2 className="text-lg font-semibold">About this item :</h2>
         <p className="text-base text-gray-500 mt-3">{details.description}</p>
         </div>
+      <ToastContainer 
+      position="top-left"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+      />
     </div>
   );
 };

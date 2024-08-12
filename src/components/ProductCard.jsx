@@ -16,16 +16,17 @@ import {
   watch2,
   watch3,
   watch4,
-} from "../assets";
+} from "../assets";  //images
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/ZenSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 export const ProductCard = () => {
 
   const dispatch = useDispatch();
-
+  
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
   const navigate = useNavigate();
 
@@ -306,13 +307,13 @@ export const ProductCard = () => {
                 <p className="font-semibold">{item.newPrice}</p>
               </div>
               <p onClick={()=>dispatch(addToCart({
-                _id: product._id,
-                title: product.title,
-                image: product.image,
-                price: product.newPrice,
+                _id: item._id,
+                title: item.title,
+                image: item.image, 
+                price: item.newPrice,
                 Quantity: 1,
-                description: product.description
-              }))} className="absolute z-20 text-gray-500 hover:font-bold hover:text-gray-700 flex items-center gap-1 top-[-2.5px] transform translate-x-44 group-hover:translate-x-0 transition-transform duration-500 cursor-pointer">
+                description: item.description
+              }))  & toast.success(`${item.title.substring(0,25)}...   is added to the cart`)} className="absolute z-20 text-gray-500 hover:font-bold hover:text-gray-700 flex items-center gap-1 top-[-2.5px] transform translate-x-44 group-hover:translate-x-0 transition-transform duration-500 cursor-pointer">
                 Add to Cart{" "}
                 <span>
                   <FaArrowRightLong />
@@ -322,6 +323,18 @@ export const ProductCard = () => {
           </div>
         </div>
       ))}
+      <ToastContainer 
+      position="top-left"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+      />
     </div>
   );
 };
