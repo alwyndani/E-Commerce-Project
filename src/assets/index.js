@@ -22,6 +22,7 @@ import watch1 from './watch1.jpg';
 import watch2 from './watch2.jpg';
 import watch3 from './watch3.jpg';
 import watch4 from './watch4.jpg';
+import mainCartImg from './cartImg.avif'
 
 export {ZenLogo, cartimg, man, theater1, gopro, smartwatch, plstation, cardIcons,
-     ps1, ps2, ps3, ps4, hm1, hm2, hm3, hm4, gopro1, gopro2, gopro3, gopro4, watch1, watch2, watch3, watch4 };
+     ps1, ps2, ps3, ps4, hm1, hm2, hm3, hm4, gopro1, gopro2, gopro3, gopro4, watch1, watch2, watch3, watch4, mainCartImg};
