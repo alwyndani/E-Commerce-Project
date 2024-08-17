@@ -21,7 +21,7 @@ export const zenSlice = createSlice({
     },
     deleteCart: (state, action) => {
         state.productData = state.productData.filter(
-            (item) => item._id !== action.payload._id
+            (item) => item._id !== action.payload
         )
     },
     resetCart: (state) => {
@@ -45,9 +45,17 @@ export const zenSlice = createSlice({
         else {
             item.Quantity--;
         }
-    }
+    },
+    // =========== User Start Here ===========//
+    addUser: (state, action) => {
+     state.userInfo = action.payload;
+    },
+    removeUser: (state) => {
+      state.userInfo = null;
+    },
+    // ============ User End Here ============//
   },
 });
 
-export const { addToCart, deleteCart, resetCart, increamentQuantity, decreamentQuantity } = zenSlice.actions;
+export const { addToCart, deleteCart, resetCart, increamentQuantity, decreamentQuantity, addUser, removeUser } = zenSlice.actions;
 export default zenSlice.reducer;

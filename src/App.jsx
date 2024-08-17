@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import { Home } from "./pages/Home";
 import { Cart } from "./pages/Cart";
 import Product from "./components/Product";
+import { Login } from "./pages/Login";
  
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
         {
           path: "/cart",
           element: <Cart />
+        }, 
+        {
+          path: "/login",
+          element: <Login />
         }
       ]
     }

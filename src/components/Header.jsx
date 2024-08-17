@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const Header = () => {
+
+  const userInfo = useSelector((state)=> state.zen.userInfo);
+  console.log(userInfo);
   const productData = useSelector((state) => state.zen.productData);
-  console.log(productData);
 
   return (
     <div className=" w-full h-22 sticky top-0 z-50 bg-slate-100 border-b-[1px] border-b-gray-800">
@@ -41,7 +43,16 @@ export const Header = () => {
             </span>
           </div>
          </Link>
-          <img className="w-10" src={man} alt="userlogo" />
+         <Link to="/login">
+          <img className="w-9" src={
+            userInfo ? userInfo.image : man
+          } alt="userlogo" />
+          </Link>
+          {
+            userInfo && (
+              <p className="text-sm font-titleFont font-semibold underline underline-offset-4">{userInfo.name}</p>
+            )
+          }
         </div>
       </div>
     </div>
