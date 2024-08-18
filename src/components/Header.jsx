@@ -19,9 +19,9 @@ export const Header = () => {
         </Link>
         <div className="flex gap-8 items-center">
           <ul className="flex gap-8 items-center">
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
+            <Link to="/"  className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
               Home
-            </li>
+            </Link>
             <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
               Pages
             </li>
