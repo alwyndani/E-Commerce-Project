@@ -7,6 +7,8 @@ import { Home } from "./pages/Home";
 import { Cart } from "./pages/Cart";
 import Product from "./components/Product";
 import { Login } from "./pages/Login";
+import { About } from "./pages/About.jsx";
+import { Contact } from "./pages/Contact.jsx";
  
 
 function App() {
@@ -35,6 +37,14 @@ function App() {
            path: "/product/:id",
            element: <Product />
         },
+        {
+          path: "/about",
+          element: <About />
+       },
+       {
+        path: "/contact",
+        element: <Contact />
+     },
         {
           path: "/cart",
           element: <Cart />

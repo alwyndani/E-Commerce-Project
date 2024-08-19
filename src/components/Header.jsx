@@ -1,13 +1,23 @@
 import React from "react";
-import { cartimg, man, ZenLogo } from "../assets/index.js";
-import { Link } from "react-router-dom";
+import { cartimg, gopro2, man, ZenLogo } from "../assets/index.js";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./Header.css";
+import { ProductCard } from "./ProductCard.jsx";
 
 export const Header = () => {
 
-  const userInfo = useSelector((state)=> state.zen.userInfo);
+const navigate = useNavigate();
+
+  const userInfo = useSelector((state) => state.zen.userInfo);
   console.log(userInfo);
   const productData = useSelector((state) => state.zen.productData);
+  console.log(productData);
+
+  const displayProducts=()=> {
+  navigate(<ProductCard />)
+  }
+  
 
   return (
     <div className=" w-full h-22 sticky top-0 z-50 bg-slate-100 border-b-[1px] border-b-gray-800">
@@ -19,40 +29,95 @@ export const Header = () => {
         </Link>
         <div className="flex gap-8 items-center">
           <ul className="flex gap-8 items-center">
-            <Link to="/"  className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
+            <Link
+              to="/"
+              className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont"
+            >
               Home
             </Link>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
-              Pages
-            </li>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
-              Shop
-            </li>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
-              Element
-            </li>
-            <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
-              Blog
-            </li>
+            <Link
+              to="/about"
+              className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont"
+            >
+              About Us
+            </Link>
+            <div class="dropdown">
+              <button class="btn  dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
+                Shop
+              </button>
+
+              <ul class="dropdown-menu min-w-max">
+                <div className="flex gap-4">
+                  <div >
+                    <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
+                      TOP COLLECTION
+                    </h2>
+                    <div className="flex flex-col mt-3 gap-4">
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Gaming
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        {" "}
+                        Home Entertainments
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Action Cameras
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Smart Watches
+                      </button>
+                    </li>
+                    </div>
+                  </div>
+                  <div onClick={displayProducts} className="w-72 cursor-pointer font-bodyFont">
+                    <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
+                      BEST SELLER
+                    </h2>
+                   <img className="w-60 border-4 cursor-pointer hover:scale-105 duration-300" src={gopro2} alt="bestseller-img" />
+                  <div className="p-2 ">
+                   <p className="text-red-700">Best Selling</p>
+                   <p className="font-semibold">GoPro HERO11 Waterproof Action Camera. </p>
+                   <p>₹ 35700</p>
+                   </div>
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <Link
+              to="/contact"
+              className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont"
+            >
+              Contact Us
+            </Link>
+          
           </ul>
-         <Link to="/cart">
-         <div  className="flex">
-            <img className="w-8" src={cartimg} alt="cartimg" />
-            <span className="text-sm font-semibold font-titleFont">
-              : {[productData.length]}
-            </span>
-          </div>
-         </Link>
-         <Link to="/login">
-          <img className="w-9" src={
-            userInfo ? userInfo.image : man
-          } alt="userlogo" />
+          <Link to="/cart">
+            <div className="flex">
+              <img className="w-8" src={cartimg} alt="cartimg" />
+              <span className="text-sm font-semibold font-titleFont">
+                : {[productData.length]}
+              </span>
+            </div>
           </Link>
-          {
-            userInfo && (
-              <p className="text-sm font-titleFont font-semibold underline underline-offset-4">{userInfo.name}</p>
-            )
-          }
+          <Link to="/login">
+            <img
+              className="w-9"
+              src={userInfo ? userInfo.image : man}
+              alt="userlogo"
+            />
+          </Link>
+          {userInfo && (
+            <p className="text-sm font-titleFont font-semibold underline underline-offset-4">
+              {userInfo.name}
+            </p>
+          )}
         </div>
       </div>
     </div>
