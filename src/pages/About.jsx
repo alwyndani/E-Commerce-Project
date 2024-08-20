@@ -1,12 +1,12 @@
 import React from "react";
-import { woofer } from "../assets";
+import { gopro1, gopro2, hm1, hm2, ps1, watch1, woofer } from "../assets";
 import { FaSearch,FaUserCheck } from "react-icons/fa";
 import { IoHeadset,IoMan } from "react-icons/io5";
 import { SiStylelint } from "react-icons/si";
 import { FaBasketShopping } from "react-icons/fa6";
 
-
 export const About = () => {
+
   return (
     <div className="bg-black">
       <div className="w-full flex">
@@ -38,6 +38,7 @@ export const About = () => {
           </div>
         </div>
       </div>
+
 
       <div className="text-center flex flex-col items-center py-16">
         <p className="text-5xl font-titleFont text-slate-300 py-12 font-bold">Our Journey So Far •••</p>

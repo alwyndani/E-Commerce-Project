@@ -3,7 +3,6 @@ import { cartimg, gopro2, man, ZenLogo } from "../assets/index.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Header.css";
-import { ProductCard } from "./ProductCard.jsx";
 
 export const Header = () => {
 
@@ -13,11 +12,17 @@ const navigate = useNavigate();
   console.log(userInfo);
   const productData = useSelector((state) => state.zen.productData);
   console.log(productData);
-
-  const displayProducts=()=> {
-  navigate(<ProductCard />)
-  }
+  const products = useSelector((state) => state.zen.products );
+  console.log(products[9].title);
   
+
+const displayProducts=()=> {
+  // navigate(`/prozduct/${products[10].title}`)
+  }
+
+  const handlePS =()=> {
+    // navigate('/cartItem')
+  }
 
   return (
     <div className=" w-full h-22 sticky top-0 z-50 bg-slate-100 border-b-[1px] border-b-gray-800">
@@ -54,7 +59,7 @@ const navigate = useNavigate();
                     </h2>
                     <div className="flex flex-col mt-3 gap-4">
                     <li>
-                      <button class="dropdown-item" type="button">
+                      <button onClick={handlePS} class="dropdown-item" type="button">
                         Gaming
                       </button>
                     </li>
@@ -76,15 +81,17 @@ const navigate = useNavigate();
                     </li>
                     </div>
                   </div>
-                  <div onClick={displayProducts} className="w-72 cursor-pointer font-bodyFont">
+                  <div  className="w-72 font-bodyFont">
                     <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
                       BEST SELLER
                     </h2>
-                   <img className="w-60 border-4 cursor-pointer hover:scale-105 duration-300" src={gopro2} alt="bestseller-img" />
+                    <div onClick={displayProducts}>
+                   <img className="w-60 border-4  hover:scale-105 duration-300" src={gopro2} alt="bestseller-img" />
                   <div className="p-2 ">
                    <p className="text-red-700">Best Selling</p>
                    <p className="font-semibold">GoPro HERO11 Waterproof Action Camera. </p>
                    <p>₹ 35700</p>
+                   </div>
                    </div>
                   </div>
                 </div>
@@ -96,7 +103,6 @@ const navigate = useNavigate();
             >
               Contact Us
             </Link>
-          
           </ul>
           <Link to="/cart">
             <div className="flex">

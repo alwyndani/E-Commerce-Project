@@ -28,7 +28,7 @@ const nextSlide =()=> {
               alt="homeTheater"
               loading="priority"
             />
-            <div className="absolute  w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
+            <div className="absolute w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
               <p className="text-black font-bodyFont font-semibold  text-xl bg-opacity-50">
                 "Level up your gaming experience with exclusive deals and
                 unbeatable prices on the PlayStation"

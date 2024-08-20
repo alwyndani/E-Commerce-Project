@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   productData: [],
   userInfo: null,
+  products: []
 };
 
 export const zenSlice = createSlice({
@@ -53,9 +54,12 @@ export const zenSlice = createSlice({
     removeUser: (state) => {
       state.userInfo = null;
     },
+      setProducts: (state, action)=> {
+      state.products = action.payload;
+    }
     // ============ User End Here ============//
   },
 });
 
-export const { addToCart, deleteCart, resetCart, increamentQuantity, decreamentQuantity, addUser, removeUser } = zenSlice.actions;
+export const { addToCart, deleteCart, resetCart, increamentQuantity, decreamentQuantity, addUser, removeUser, setProducts } = zenSlice.actions;
 export default zenSlice.reducer;

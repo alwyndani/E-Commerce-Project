@@ -9,6 +9,7 @@ import Product from "./components/Product";
 import { Login } from "./pages/Login";
 import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
+import CartItem from "./components/CartItem.jsx";
  
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
           path: "/cart",
           element: <Cart />
         }, 
+        {
+          path: "/cartItem",
+          element: <CartItem />,
+        },
         {
           path: "/login",
           element: <Login />

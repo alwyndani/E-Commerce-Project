@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MdOutlineStar } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/ZenSlice";
 import { ToastContainer, toast } from "react-toastify";
 
 const Product = () => {
 
   const dispatch = useDispatch();
+
   const [details, setDetails] = useState({});
   const [baseQty, setBaseQty] = useState(1);
-
+  const products = useSelector((state)=> state.zen.products)
   const location = useLocation();
   useEffect(() => {
     setDetails(location.state.product);
   }, []);
+  console.log(details);
+  
+
+  const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   return (
     <div className=" flex flex-col">
@@ -35,8 +40,8 @@ const Product = () => {
           <div>
             <h2 className="text-3xl font-semibold">{details.title}</h2>
             <div className="flex items-center gap-4 mt-3">
-              <p className="line-through font-base text-gray-500">{details.oldPrice}</p>
-              <p className="text-2xl font-medium text-gray-900">{details.newPrice}</p>
+              <p className="line-through font-base text-gray-500">{(details.oldPrice)}</p>
+              <p className="text-2xl font-medium text-gray-900">{(details.newPrice)}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-base">
