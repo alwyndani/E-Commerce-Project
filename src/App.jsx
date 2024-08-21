@@ -10,6 +10,7 @@ import { Login } from "./pages/Login";
 import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import CartItem from "./components/CartItem.jsx";
+import { ProductCard } from "./components/ProductCard.jsx";
  
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
            path: "/product/:id",
            element: <Product />
         },
+        {
+          path: "/productCard",
+          element: <ProductCard />
+       },
         {
           path: "/about",
           element: <About />

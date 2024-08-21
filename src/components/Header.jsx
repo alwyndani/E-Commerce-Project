@@ -3,25 +3,35 @@ import { cartimg, gopro2, man, ZenLogo } from "../assets/index.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Header.css";
+import { ProductCard } from "./ProductCard.jsx";
+import Product from "./Product.jsx";
 
 export const Header = () => {
 
 const navigate = useNavigate();
+const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   const userInfo = useSelector((state) => state.zen.userInfo);
-  console.log(userInfo);
   const productData = useSelector((state) => state.zen.productData);
-  console.log(productData);
   const products = useSelector((state) => state.zen.products );
-  console.log(products[9].title);
-  
+ 
 
-const displayProducts=()=> {
-  // navigate(`/prozduct/${products[10].title}`)
+const displayProducts=(item, title)=> {
+  const _id = title;
+  const idstring = (_id) => {
+    const value = String(_id).toLowerCase().split(" ").join("");
+    return value.substring(0, 40);
+  };
+  const rootId = idstring(_id);  
+    navigate(`/product/${rootId}`, { 
+      state: {
+       bestSlr : item
+      },
+    });
   }
 
   const handlePS =()=> {
-    // navigate('/cartItem')
+    navigate('/productCard')
   }
 
   return (
@@ -50,7 +60,7 @@ const displayProducts=()=> {
               <button class="btn  dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
                 Shop
               </button>
-
+            
               <ul class="dropdown-menu min-w-max">
                 <div className="flex gap-4">
                   <div >
@@ -85,12 +95,12 @@ const displayProducts=()=> {
                     <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
                       BEST SELLER
                     </h2>
-                    <div onClick={displayProducts}>
-                   <img className="w-60 border-4  hover:scale-105 duration-300" src={gopro2} alt="bestseller-img" />
+                    <div onClick={()=> displayProducts(products[9], products[9].title)}>
+                   <img className="w-60 border-4  hover:scale-105 duration-300" src={products[9].image} alt="bestseller-img" />
                   <div className="p-2 ">
                    <p className="text-red-700">Best Selling</p>
-                   <p className="font-semibold">GoPro HERO11 Waterproof Action Camera. </p>
-                   <p>₹ 35700</p>
+                   <p className="font-semibold">{products[9].title.substring(0,38)}. </p>
+                   <p> {formatPrice(products[9].newPrice)} </p>
                    </div>
                    </div>
                   </div>

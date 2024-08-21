@@ -10,7 +10,6 @@ import axios from "axios";
 export const Cart = () => {
   const userInfo = useSelector((state) => state.zen.userInfo);
   const productData = useSelector((state) => state.zen.productData);
-  console.log(productData);
 
   const formatPrice = (price) => `₹ ${price.toLocaleString()}`;
 
@@ -20,7 +19,8 @@ export const Cart = () => {
   useEffect(() => {
     let price = 0;
     productData.map((item) => {
-      price += Number(item.price.replace(/₹|,/g, "")) * item.Quantity;
+      price += item.price * item.Quantity;
+    
       return price;
     });
     setTotalAmount(price);

@@ -13,11 +13,13 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 const CartItem = () => {
+
   const dispatch = useDispatch();
 
   const productData = useSelector((state) => state.zen.productData);
-
-  const formatPrice = (price) => `₹ ${price.toLocaleString()}`;
+  console.log(productData);
+  
+  const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   return (
     <div className="w-2/3 pr-10">
@@ -48,7 +50,7 @@ const CartItem = () => {
                 </div>
 
                 <h2 className="w-32">{item.title.substring(0, 34)}...</h2>
-                <p className="w-13"> {item.price}</p>
+                <p className="w-13"> {formatPrice (item.price)}</p>
                 <div className="flex items-center justify-between text-gray-500 gap-4 border p-3">
                   <p className="text-sm">Quantity</p>
                   <div className="flex items-center text-sm font-semibold">
@@ -90,10 +92,7 @@ const CartItem = () => {
                   </div>
                 </div>
                 <p className="w-20">
-                  {" "}
-                  {formatPrice(
-                    item.Quantity * Number(item.price.replace(/₹|,/g, ""))
-                  )}{" "}
+                {formatPrice(item.Quantity * item.price)}
                 </p>
               </div>
             ))}

@@ -27,10 +27,8 @@ import { setProducts } from "../redux/ZenSlice";
 export const ProductCard = () => {
 
   const dispatch = useDispatch();
-  
-  const formatPrice = (price) => `₹${price.toLocaleString()}`;
-  
   const navigate = useNavigate();
+  const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   const product = [
     {
