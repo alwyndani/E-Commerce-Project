@@ -14,6 +14,7 @@ import {
   MdContactSupport,
 } from "react-icons/md";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -45,20 +46,20 @@ export const Footer = () => {
         <div>
           <h2 className="text-2xl font-semibold text-white mb-4">Profile</h2>
           <div className="text-base flex flex-col gap-2">
-            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+            <Link to='/profile' className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
               {" "}
               <span>
                 <IoBagCheckOutline />
               </span>{" "}
               My account
-            </p>
-            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+            </Link>
+            <Link to="/cart" className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
               {" "}
               <span>
                 <MdAccountCircle />
               </span>
               Checkout
-            </p>
+            </Link>
             <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
               {" "}
               <span>
@@ -66,13 +67,13 @@ export const Footer = () => {
               </span>
               Order Tracking
             </p>
-            <p className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
+            <Link to='/contact' className="flex items-center gap-3 hover:text-white duration-300 cursor-pointer">
               {" "}
               <span>
                 <MdContactSupport />
               </span>{" "}
               Help $ Support
-            </p>
+            </Link>
           </div>
         </div>
 

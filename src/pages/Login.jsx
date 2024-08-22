@@ -6,7 +6,6 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { Result } from "postcss";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../redux/ZenSlice";
@@ -29,7 +28,7 @@ export const Login = () => {
           _id: user.uid,
           name: user.displayName,
           email: user.email,
-          image: user.photoURL
+          image: user.photoURL,
         }));
        setTimeout(() => {
         navigate("/");
@@ -43,7 +42,6 @@ export const Login = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         console.log("succesful");
         toast.success("Log Out Successfully");
         dispatch(removeUser());
@@ -78,6 +76,9 @@ export const Login = () => {
         <button className="bg-black text-white text-base py-3 px-8 tracking-wide rounded-md hover:bg-gray-600 duration-300">
           Sign Out
         </button>
+      </div>
+      <div>
+        
       </div>
       <ToastContainer 
       position="top-left"

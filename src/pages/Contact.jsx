@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './Contact.css'; // Ensure this CSS file is in the same directory
 import { ToastContainer, toast } from "react-toastify";
+import { contact2, contact3 } from '../assets';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -56,13 +57,20 @@ export const Contact = () => {
 
   return (
     <div>
-      <section id="contact">
-        <div className="container">
-          <h3 className="contact-heading">CONTACT</h3>
+      <div className='w-full relative'>
+        <img className='object-cover w-full h-[485px]' src= {contact3} alt='contact-img1' />
+        <img className='absolute w-[500px] top-60 left-[75px] border-s-8 border-t-8' src={contact2} alt='contact-img2' />
+        <div >
+        <h3 className="contact-heading">CONTACT</h3>
           <hr className="divider" />
           <p className="contact-description w-2/3 m-auto pb-9">
             Reach out to us at ZenZest Treasures! Since 2012, our dedicated team is here to provide you with personalized support and expert advice. Whether you need help with an order, product information, or anything else, we're just a message or call away. Contact us for a seamless and friendly customer experience.
           </p>
+        </div>
+      </div>
+      <section id="contact">
+        <div className="container">
+          
           <div className="contact-info">
             <div className="info-card">
               <i className="fa-solid fa-location-dot"></i>

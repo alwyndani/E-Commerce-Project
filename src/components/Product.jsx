@@ -16,44 +16,50 @@ const Product = () => {
 
   const location = useLocation();
   useEffect(() => {
-      setDetails(location.state.product)
-      console.log("wvbiubsvzvvzvvc");
-      
-  }, []);
-  console.log(details);
-  console.log("ccsd hgns xzx ");
-  
+      setDetails(location.state.product)      
+  }, [location.state.product]);  
 
   const seller = useLocation();
   useEffect(()=> {
     setBestSlr(seller.state.bestSlr)
-  }, [])
+  }, [seller.state.bestSlr] )
    
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({
+      _id: product._id,
+      title: product.title,
+      image: product.image,
+      price: product.newPrice,
+      Quantity: baseQty,
+      description: product.description
+    }));
+    toast.success(`${product.title.substring(0, 25)}... is added to the cart`);
+  };
+
+  const productToDisplay = location.state.product || bstSlr;
 
   return (
     <div className=" flex flex-col">
-    {
-      location.state.product ? (
-       <>
+   
        <div className="max-w-screen-xl mx-auto my-10 h-96 flex gap-10">
         <div className="w-2/5 relative">
         <img
               className="h-full w-full object-cover"
-              src={details.image}
-              alt={details.alt}
+              src={productToDisplay.image}
+              alt={productToDisplay.alt}
             />
             <div className="absolute top-4 right-0">
-              {details.isNow && (
+              {productToDisplay.isNow && (
                 <p className="bg-black text-white font-semibold font-titleFont px-8 py-1">Sale</p>
               )}
             </div>
         </div>
         <div className="w-3/5 flex flex-col justify-center gap-12">
           <div>
-            <h2 className="text-3xl font-semibold">{details.title}</h2>
+            <h2 className="text-3xl font-semibold">{productToDisplay.title}</h2>
             <div className="flex items-center gap-4 mt-3">
-              <p className="line-through font-base text-gray-500">{formatPrice(Number(details.oldPrice))}</p>
-              <p className="text-2xl font-medium text-gray-900">{formatPrice(Number(details.newPrice))}</p>
+              <p className="line-through font-base text-gray-500">{formatPrice(Number(productToDisplay.oldPrice))}</p>
+              <p className="text-2xl font-medium text-gray-900">{formatPrice(Number(productToDisplay.newPrice))}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-base">
@@ -75,81 +81,14 @@ const Product = () => {
                 <button onClick={()=> setBaseQty(baseQty + 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">+</button>
               </div>
             </div>
-            <button onClick={()=> dispatch ( addToCart({
-              _id: details._id,
-              title: details.title,
-              image: details.image, 
-              price: details.newPrice,
-              Quantity: baseQty,
-              description: details.description
-            })
-            ) & toast.success(`${details.title.substring(0,25)}...   is added to the cart`) } className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to Cart</button>
+            <button onClick={()=> handleAddToCart(productToDisplay)} className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to Cart</button>
           </div>
         </div>
       </div>
       <div className="container max-w-screen-xl mx-auto mb-10">
         <h2 className="text-lg font-semibold">About this item :</h2>
-        <p className="text-base text-gray-500 mt-3">{details.description}</p>
+        <p className="text-base text-gray-500 mt-3">{productToDisplay.description}</p>
         </div>
-       </>
-      ) : (
-        <><div className="max-w-screen-xl mx-auto my-10 h-96 flex gap-10">
-              <div className="w-2/5 relative">
-                <img
-                  className="h-full w-full object-cover"
-                  src={bstSlr.image}
-                  alt={bstSlr.alt} />
-                <div className="absolute top-4 right-0">
-                  {bstSlr.isNow && (
-                    <p className="bg-black text-white font-semibold font-titleFont px-8 py-1">Sale</p>
-                  )}
-                </div>
-              </div>
-              <div className="w-3/5 flex flex-col justify-center gap-12">
-                <div>
-                  <h2 className="text-3xl font-semibold">{bstSlr.title}</h2>
-                  <div className="flex items-center gap-4 mt-3">
-                    <p className="line-through font-base text-gray-500">{formatPrice(Number(bstSlr.oldPrice))}</p>
-                    <p className="text-2xl font-medium text-gray-900">{formatPrice(Number(bstSlr.newPrice))}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-base">
-                  <div className="flex">
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                  </div>
-                  <p className="text-xs text-gray-500">(1 Customer review)</p>
-                </div>
-                <div className="flex gap-4">
-                  <div className=" flex items-center justify-between text-gray-500 gap-4 border p-3">
-                    <p className="text-sm">Quantity</p>
-                    <div className="flex items-center gap-4 text-sm font-semibold">
-                      <button onClick={() => setBaseQty(baseQty === 1 ? 1 : baseQty - 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">-</button>
-                      <span>{baseQty}</span>
-                      <button onClick={() => setBaseQty(baseQty + 1)} className="border h-5 font-normal text-lg flex items-center justify-center px-2 hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black">+</button>
-                    </div>
-                  </div>
-                  <button onClick={() => dispatch(addToCart({
-                    _id: bstSlr._id,
-                    title: bstSlr.title,
-                    image: bstSlr.image,
-                    price: bstSlr.newPrice,
-                    Quantity: baseQty,
-                    description: bstSlr.description
-                  })
-                  ) & toast.success(`${bstSlr.title.substring(0, 25)}...   is added to the cart`)} className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to Cart</button>
-                </div>
-              </div>
-            </div><div className="container max-w-screen-xl mx-auto mb-10">
-                <h2 className="text-lg font-semibold">About this item :</h2>
-                <p className="text-base text-gray-500 mt-3">{bstSlr.description}</p>
-              </div></>
-      )
-    }
-
       
       <ToastContainer 
       position="top-left"

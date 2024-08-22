@@ -13,12 +13,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 const CartItem = () => {
-
   const dispatch = useDispatch();
 
   const productData = useSelector((state) => state.zen.productData);
-  console.log(productData);
-  
+
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   return (
@@ -29,8 +27,11 @@ const CartItem = () => {
       <div>
         {productData.length !== 0 ? (
           <>
+                          <p className="font-bodyFont py-1">You have added {productData.length} item to your cart.</p>
             {" "}
             {productData.map((item) => (
+            
+                
               <div
                 key={item._id}
                 className="flex items-center mt-6 justify-between gap-6"
@@ -50,7 +51,7 @@ const CartItem = () => {
                 </div>
 
                 <h2 className="w-32">{item.title.substring(0, 34)}...</h2>
-                <p className="w-13"> {formatPrice (item.price)}</p>
+                <p className="w-13"> {formatPrice(item.price)}</p>
                 <div className="flex items-center justify-between text-gray-500 gap-4 border p-3">
                   <p className="text-sm">Quantity</p>
                   <div className="flex items-center text-sm font-semibold">
@@ -92,9 +93,10 @@ const CartItem = () => {
                   </div>
                 </div>
                 <p className="w-20">
-                {formatPrice(item.Quantity * item.price)}
+                  {formatPrice(item.Quantity * item.price)}
                 </p>
               </div>
+         
             ))}
             <button
               className="bg-red-500 text-white mt-8 ml-7 py-1 px-6 hover:bg-red-800 duration-300"

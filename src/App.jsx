@@ -11,6 +11,7 @@ import { About } from "./pages/About.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import CartItem from "./components/CartItem.jsx";
 import { ProductCard } from "./components/ProductCard.jsx";
+import { Profile } from "./components/Profile";
  
 
 function App() {
@@ -62,6 +63,10 @@ function App() {
         {
           path: "/login",
           element: <Login />
+        },
+        {
+          path: "/profile",
+          element: <Profile />
         }
       ]
     }

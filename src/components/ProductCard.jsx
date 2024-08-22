@@ -277,10 +277,10 @@ export const ProductCard = () => {
     });
   };
 
-  return (
+  return (  
     <div className="max-w-screen-xl mx-auto grid grid-cols-4 py-6 gap-4">
       {product.map((item) => (
-        <div key={item.alt} className="bg-slate-50 group mb-3 relative">
+        <div key={item.alt} className="bg-slate-50 group mb-3 border-2 relative">
           <div
             onClick={() => {
               handleDetails(item, item.title);
@@ -300,7 +300,7 @@ export const ProductCard = () => {
               )}
             </div>
           </div>
-          <div className="w-full border-[1px] px-2 py-4 flex h-[172px] flex-col gap-2">
+          <div className="w-full px-2 py-4 flex h-[172px] flex-col gap-2">
             <div>
               <h2 className="font-titleFont text-sm font-semibold">
                 {item.title}

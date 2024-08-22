@@ -25,7 +25,12 @@ import watch4 from './watch4.jpg';
 import mainCartImg from './cartImg.avif';
 import google from './google.png';
 import github from './github.png';
-import woofer from './woofer.jpg'
+import woofer from './woofer.jpg';
+import contact1 from './contact.jpg';
+import contact2 from './contact11.jpg';
+import contact3 from './contact22.png';
+
+
 
 export {ZenLogo, cartimg, man, theater1, gopro, smartwatch, plstation, cardIcons,
-     ps1, ps2, ps3, ps4, hm1, hm2, hm3, hm4, gopro1, gopro2, gopro3, gopro4, watch1, watch2, watch3, watch4, mainCartImg, google, github , woofer};
+     ps1, ps2, ps3, ps4, hm1, hm2, hm3, hm4, gopro1, gopro2, gopro3, gopro4, watch1, watch2, watch3, watch4, mainCartImg, google, github , woofer, contact1, contact2, contact3};

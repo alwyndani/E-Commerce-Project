@@ -7,32 +7,31 @@ import { ProductCard } from "./ProductCard.jsx";
 import Product from "./Product.jsx";
 
 export const Header = () => {
-
-const navigate = useNavigate();
-const formatPrice = (price) => `₹${price.toLocaleString()}`;
+  const navigate = useNavigate();
+  const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
   const userInfo = useSelector((state) => state.zen.userInfo);
   const productData = useSelector((state) => state.zen.productData);
-  const products = useSelector((state) => state.zen.products );
- 
-
-const displayProducts=(item, title)=> {
-  const _id = title;
-  const idstring = (_id) => {
-    const value = String(_id).toLowerCase().split(" ").join("");
-    return value.substring(0, 40);
-  };
-  const rootId = idstring(_id);  
-    navigate(`/product/${rootId}`, { 
+  const products = useSelector((state) => state.zen.products);
+  console.log(userInfo);
+  
+  const displayProducts = (item, title) => {
+    const _id = title;
+    const idstring = (_id) => {
+      const value = String(_id).toLowerCase().split(" ").join("");
+      return value.substring(0, 40);
+    };
+    const rootId = idstring(_id);
+    navigate(`/product/${rootId}`, {
       state: {
-       bestSlr : item
+        bestSlr: item,
       },
     });
-  }
+  };
 
-  const handlePS =()=> {
-    navigate('/productCard')
-  }
+  const handlePS = () => {
+    navigate("/productCard");
+  };
 
   return (
     <div className=" w-full h-22 sticky top-0 z-50 bg-slate-100 border-b-[1px] border-b-gray-800">
@@ -57,52 +56,66 @@ const displayProducts=(item, title)=> {
               About Us
             </Link>
             <div class="dropdown">
-              <button class="btn  dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
+              <button class="btn p-0 dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
                 Shop
               </button>
-            
+
               <ul class="dropdown-menu min-w-max">
                 <div className="flex gap-4">
-                  <div >
+                  <div>
                     <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
                       TOP COLLECTION
                     </h2>
                     <div className="flex flex-col mt-3 gap-4">
-                    <li>
-                      <button onClick={handlePS} class="dropdown-item" type="button">
-                        Gaming
-                      </button>
-                    </li>
-                    <li>
-                      <button class="dropdown-item" type="button">
-                        {" "}
-                        Home Entertainments
-                      </button>
-                    </li>
-                    <li>
-                      <button class="dropdown-item" type="button">
-                        Action Cameras
-                      </button>
-                    </li>
-                    <li>
-                      <button class="dropdown-item" type="button">
-                        Smart Watches
-                      </button>
-                    </li>
+                      <li>
+                        <button
+                          onClick={handlePS}
+                          class="dropdown-item"
+                          type="button"
+                        >
+                          Gaming
+                        </button>
+                      </li>
+                      <li>
+                        <button  onClick={handlePS} class="dropdown-item" type="button">
+                          {" "}
+                          Home Entertainments
+                        </button>
+                      </li>
+                      <li>
+                        <button  onClick={handlePS} class="dropdown-item" type="button">
+                          Action Cameras
+                        </button>
+                      </li>
+                      <li>
+                        <button onClick={handlePS} class="dropdown-item" type="button">
+                          Smart Watches
+                        </button>
+                      </li>
                     </div>
                   </div>
-                  <div  className="w-72 font-bodyFont">
+                  <div className="w-72 font-bodyFont">
                     <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
                       BEST SELLER
                     </h2>
-                    <div onClick={()=> displayProducts(products[9], products[9].title)}>
-                   <img className="w-60 border-4  hover:scale-105 duration-300" src={products[9].image} alt="bestseller-img" />
-                  <div className="p-2 ">
-                   <p className="text-red-700">Best Selling</p>
-                   <p className="font-semibold">{products[9].title.substring(0,38)}. </p>
-                   <p> {formatPrice(products[9].newPrice)} </p>
-                   </div>
-                   </div>
+                    <div
+                      onClick={() =>
+                        displayProducts(products[9], products[9].title)
+                      }
+                    >
+                      <img
+                        className="w-60 border-4  hover:scale-105 duration-300"
+                        src={products[9].image}
+                        alt="bestseller-img"
+                      />
+                      <div className="p-2 ">
+                        <p className="text-red-700">Best Selling</p>
+                        <p className="font-semibold">
+                          {products[9].title.substring(0, 38)}.{" "}
+                        </p>
+                        <p> {formatPrice(products[9].newPrice)} </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </ul>
@@ -122,18 +135,20 @@ const displayProducts=(item, title)=> {
               </span>
             </div>
           </Link>
-          <Link to="/login">
-            <img
-              className="w-9"
-              src={userInfo ? userInfo.image : man}
-              alt="userlogo"
-            />
-          </Link>
-          {userInfo && (
-            <p className="text-sm font-titleFont font-semibold underline underline-offset-4">
-              {userInfo.name}
-            </p>
-          )}
+
+          <div class="dropdown">
+           <button class="btn flex p-0 items-center gap-1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img className="w-9" src={userInfo ? userInfo.image : man} alt="userlogo" />
+           </button>
+            <ul class="dropdown-menu">
+               <Link to='/login'><a class="dropdown-item" href="#">Login</a></Link>
+               <Link to='/profile'><a class="dropdown-item" href="#">My Profile</a></Link>
+            </ul>
+          </div>
+          {
+            userInfo && 
+            <p className="text-sm font-titleFont font-semibold underline underline-offset-4">{userInfo.name}</p>
+          }
         </div>
       </div>
     </div>
