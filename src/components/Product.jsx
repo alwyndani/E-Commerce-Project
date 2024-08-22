@@ -14,15 +14,27 @@ const Product = () => {
   const [baseQty, setBaseQty] = useState(1);
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
-  const location = useLocation();
-  useEffect(() => {
-      setDetails(location.state.product)      
-  }, [location.state.product]);  
+  // const location = useLocation();
+  // useEffect(() => {
+  //     setDetails(location.state.product)      
+  // }, [location.state.product]);  
+  // console.log(details);
+  
 
-  const seller = useLocation();
+  // const seller = useLocation();
+  // useEffect(()=> {
+  //   setBestSlr(seller.state.bestSlr)
+  // }, [seller.state.bestSlr] )
+  // console.log(bstSlr);
+
+  const location = useLocation();
   useEffect(()=> {
-    setBestSlr(seller.state.bestSlr)
-  }, [seller.state.bestSlr] )
+    if(location.state) {
+      setDetails(location.state.product) || {},
+      setBestSlr(location.state.bestSlr) || {}
+    }
+  })
+
    
   const handleAddToCart = (product) => {
     dispatch(addToCart({
@@ -36,7 +48,7 @@ const Product = () => {
     toast.success(`${product.title.substring(0, 25)}... is added to the cart`);
   };
 
-  const productToDisplay = location.state.product || bstSlr;
+  const productToDisplay = details || bstSlr;
 
   return (
     <div className=" flex flex-col">

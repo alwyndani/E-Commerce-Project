@@ -10,9 +10,9 @@ export const Header = () => {
   const navigate = useNavigate();
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
-  const userInfo = useSelector((state) => state.zen.userInfo);
-  const productData = useSelector((state) => state.zen.productData);
-  const products = useSelector((state) => state.zen.products);
+  const userInfo = useSelector((state) => state.zen.userInfo);   //for displaying user login details in header 
+  const productData = useSelector((state) => state.zen.productData);  //for displaying cart length in header 
+  const products = useSelector((state) => state.zen.products); //for displaying best seller details in header 
   console.log(userInfo);
   
   const displayProducts = (item, title) => {
@@ -55,12 +55,12 @@ export const Header = () => {
             >
               About Us
             </Link>
-            <div class="dropdown">
-              <button class="btn p-0 dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
+            <div className="dropdown">
+              <button className="btn p-0 dropdown-toggle text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300 font-titleFont">
                 Shop
               </button>
 
-              <ul class="dropdown-menu min-w-max">
+              <ul className="dropdown-menu min-w-max">
                 <div className="flex gap-4">
                   <div>
                     <h2 className="text-base font-titleFont font-semibold p-2 bg-slate-200">
@@ -70,25 +70,25 @@ export const Header = () => {
                       <li>
                         <button
                           onClick={handlePS}
-                          class="dropdown-item"
+                          className="dropdown-item"
                           type="button"
                         >
                           Gaming
                         </button>
                       </li>
                       <li>
-                        <button  onClick={handlePS} class="dropdown-item" type="button">
+                        <button  onClick={handlePS} className="dropdown-item" type="button">
                           {" "}
                           Home Entertainments
                         </button>
                       </li>
                       <li>
-                        <button  onClick={handlePS} class="dropdown-item" type="button">
+                        <button  onClick={handlePS} className="dropdown-item" type="button">
                           Action Cameras
                         </button>
                       </li>
                       <li>
-                        <button onClick={handlePS} class="dropdown-item" type="button">
+                        <button onClick={handlePS} className="dropdown-item" type="button">
                           Smart Watches
                         </button>
                       </li>
@@ -128,7 +128,7 @@ export const Header = () => {
             </Link>
           </ul>
           <Link to="/cart">
-            <div className="flex">
+            <div className="flex items-center">
               <img className="w-8" src={cartimg} alt="cartimg" />
               <span className="text-sm font-semibold font-titleFont">
                 : {[productData.length]}
@@ -136,14 +136,13 @@ export const Header = () => {
             </div>
           </Link>
 
-          <div class="dropdown">
-           <button class="btn flex p-0 items-center gap-1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="dropdown">
+           <button className="btn flex p-0 items-center gap-1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img className="w-9" src={userInfo ? userInfo.image : man} alt="userlogo" />
            </button>
-            <ul class="dropdown-menu">
-               <Link to='/login'><a class="dropdown-item" href="#">Login</a></Link>
-               <Link to='/profile'><a class="dropdown-item" href="#">My Profile</a></Link>
-            </ul>
+            <ul className="dropdown-menu">
+            <li><Link to='/login' className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Login</Link></li>
+            <li><Link to='/profile' className="block px-4 py-2 text-gray-800 hover:bg-gray-200">My Profile</Link></li>           </ul>
           </div>
           {
             userInfo && 
