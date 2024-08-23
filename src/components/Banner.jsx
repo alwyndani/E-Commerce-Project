@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { theater1, plstation, gopro, smartwatch } from "../assets";
 import { FaAnglesLeft } from "react-icons/fa6";
 import { FaAnglesRight } from "react-icons/fa6";
-
+import './Banner.css'
 
 export const Banner = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -28,7 +28,7 @@ const nextSlide =()=> {
               alt="homeTheater"
               loading="priority"
             />
-            <div className="absolute w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
+            <div className="absolute caption1 w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
               <p className="text-black font-bodyFont font-semibold  text-xl bg-opacity-50">
                 "Level up your gaming experience with exclusive deals and
                 unbeatable prices on the PlayStation"
@@ -41,7 +41,7 @@ const nextSlide =()=> {
               src={data[1]}
               alt="playstation"
             />
-            <div className="absolute  w-96 h-min shadow-2xl h-full top-14 right-[663px]  p-1 ">
+            <div className="absolute caption2 w-96 h-min shadow-2xl h-full top-14 right-[663px]  p-1 ">
               <p className="text-black font-bodyFont font-extrabold  text-xl ">
               "Experience movie magic like never before—discover unbeatable deals on home theater systems today!"
               </p>
@@ -53,8 +53,8 @@ const nextSlide =()=> {
               src={data[2]}
               alt="gopro"
             />
-            <div className="absolute  w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
-              <p className="text-black font-bodyFont font-semibold  text-xl bg-opacity-50">
+            <div className="absolute caption3   w-96 h-min shadow-2xl h-full top-44 left-48  p-1 ">
+              <p className="text-black caption3-para font-bodyFont font-semibold  text-xl bg-opacity-50">
               "Capture your adventures in stunning detail with GoPro—where every moment becomes a masterpiece."
               </p>
             </div>
@@ -65,8 +65,8 @@ const nextSlide =()=> {
               src={data[3]}
               alt="smartwatch"
             />
-            <div className="absolute  w-96 h-min shadow-2xl h-full top-44 right-56  p-1 ">
-              <p className="text-black font-bodyFont font-semibold  text-xl bg-opacity-50">
+            <div className="absolute caption4  w-96 h-min shadow-2xl h-full top-44 right-56  p-1 ">
+              <p className="text-black caption1-para font-bodyFont font-semibold  text-xl bg-opacity-50">
               "Track your health, manage your time, and stay connected with smartwatches crafted for modern living."
               </p>
             </div>

@@ -38,7 +38,7 @@ export const Cart = () => {
     await axios.post("http://localhost:8000/pay", {
       amount: totalAmount * 100,
       token: token
-    })
+    }, toast.success("Thank you for your payment! Your transaction was successful, and we will process your order right away. You’ll receive your product soon."))
   }
 
   return (

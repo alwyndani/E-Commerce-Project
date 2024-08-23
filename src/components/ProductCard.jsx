@@ -270,7 +270,7 @@ export const ProductCard = () => {
 
     navigate(`/product/${rootId}`, {
       state: {
-        bestSlr: item,
+        product: item,
       },
     });
   };
@@ -279,13 +279,13 @@ export const ProductCard = () => {
     <div className="max-w-screen-xl mx-auto grid grid-cols-4 py-6 gap-4">
       {product.map((item) => (
         <div
-          onClick={() => {
-            handleDetails(item, item.title);
-          }}
+         
           key={item._id}
           className="bg-slate-50 group mb-3 border-2 relative"
         >
-          <div className="w-full h-64  cursor-pointer overflow-hidden">
+          <div  onClick={() => {
+            handleDetails(item, item.title);
+          }} className="w-full h-64  cursor-pointer overflow-hidden">
             <img
               className="h-full w-full object-cover group-hover:scale-110   duration-500"
               src={item.image}

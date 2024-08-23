@@ -24,7 +24,7 @@ export const Header = () => {
     const rootId = idstring(_id);
     navigate(`/product/${rootId}`, {
       state: {
-        bestSlr: item,
+        product: item,
       },
     });
   };

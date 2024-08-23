@@ -9,33 +9,20 @@ const Product = () => {
 
   const dispatch = useDispatch();
 
-  const [details, setDetails] = useState({});
-  const [bstSlr, setBestSlr] = useState({});
+  // const [details, setDetails] = useState({});
+  const [item, setItem] = useState({});
   const [baseQty, setBaseQty] = useState(1);
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
-  // const location = useLocation();
-  // useEffect(() => {
-  //     setDetails(location.state.product)      
-  // }, [location.state.product]);  
-  // console.log(details);
-  
-
-  // const seller = useLocation();
-  // useEffect(()=> {
-  //   setBestSlr(seller.state.bestSlr)
-  // }, [seller.state.bestSlr] )
-  // console.log(bstSlr);
-
   const location = useLocation();
   useEffect(()=> {
-    if(location.state) {
-      setDetails(location.state.product) || {},
-      setBestSlr(location.state.bestSlr) || {}
-    }
+    // if(location.state) {
+    //   setDetails(location.state.details) || {},
+      setItem(location.state.product) || {}
+    // }
   })
+  console.log(item);
 
-   
   const handleAddToCart = (product) => {
     dispatch(addToCart({
       _id: product._id,
@@ -48,7 +35,8 @@ const Product = () => {
     toast.success(`${product.title.substring(0, 25)}... is added to the cart`);
   };
 
-  const productToDisplay = details || bstSlr;
+  // const productToDisplay = details || bstSlr;
+  const productToDisplay =  item;
 
   return (
     <div className=" flex flex-col">
