@@ -1,0 +1,22 @@
+@media (max-width :768px) {
+    .cartItem {
+        margin-left: 20px;
+      
+    }
+}
+
+@media (max-width : 767px) {
+.ccc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartItem-img {
+    width: 250px!important;
+    height: 200px!important;
+
+}
+
+}

@@ -1,3 +1,6 @@
+
+
+
 import React, { useEffect } from "react";
 import {
   ps1,
@@ -23,6 +26,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/ZenSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { setProducts } from "../redux/ZenSlice";
+import './ProductCard.css';
 
 export const ProductCard = () => {
   const dispatch = useDispatch();
@@ -256,9 +260,9 @@ export const ProductCard = () => {
     },
   ];
 
-  useEffect(() => {
-    dispatch(setProducts(product));
-  }, [dispatch, product]);
+  useEffect(()=> {
+    dispatch(setProducts(product))
+  }, [dispatch, product])
 
   const handleDetails = (item, title) => {
     const _id = title;
@@ -276,81 +280,88 @@ export const ProductCard = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto grid grid-cols-4 py-6 gap-4">
-      {product.map((item) => (
-        <div
-         
-          key={item._id}
-          className="bg-slate-50 group mb-3 border-2 relative"
-        >
-          <div  onClick={() => {
-            handleDetails(item, item.title);
-          }} className="w-full h-64  cursor-pointer overflow-hidden">
-            <img
-              className="h-full w-full object-cover group-hover:scale-110   duration-500"
-              src={item.image}
-              alt={item.alt}
-            />
-            <div className="absolute top-4 right-0">
-              {item.isNow && (
-                <p className="bg-black text-white font-semibold px-6 py-1">
-                  Sale
-                </p>
-              )}
-            </div>
-          </div>
-          <div className="w-full px-2 py-4 flex h-[172px] flex-col gap-2">
-            <div>
-              <h2 className="font-titleFont text-sm font-semibold">
-                {item.title}
-              </h2>
-            </div>
-            <div className="relative overflow-hidden w-32">
-              <div className="flex gap-2 text-sm relative transform group-hover:translate-x-32 transition-transform duration-500 w-28">
-                <p className="line-through text-gray-500">
-                  {formatPrice(item.oldPrice)}
-                </p>
-                <p className="font-semibold">{formatPrice(item.newPrice)}</p>
-              </div>
-              <p
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      _id: item._id,
-                      title: item.title,
-                      image: item.image,
-                      price: item.newPrice,
-                      Quantity: 1,
-                      description: item.description,
-                    })
-                  ) &
-                  toast.success(
-                    `${item.title.substring(0, 25)}...   is added to the cart`
-                  )
-                }
-                className="absolute z-20 text-gray-500 hover:font-bold hover:text-gray-700 flex items-center gap-1 top-[-2.5px] transform translate-x-44 group-hover:translate-x-0 transition-transform duration-500 cursor-pointer"
-              >
-                Add to Cart{" "}
-                <span>
-                  <FaArrowRightLong />
-                </span>
-              </p>
-            </div>
-          </div>
+
+
+<div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-6 gap-4">
+  {product.map((item) => (
+    <div
+      key={item._id}
+      className="bg-slate-50 card-div group mb-3 border-2 relative"
+    >
+      <div 
+        onClick={() => {
+          handleDetails(item, item.title);
+        }}
+        className="w-full card h-64 cursor-pointer overflow-hidden"
+      >
+        <img
+          className="h-full card-image w-full object-cover group-hover:scale-110 duration-500"
+          src={item.image}
+          alt={item.alt}
+        />
+        <div className="absolute top-4 right-0">
+          {item.isNow && (
+            <p className="bg-black text-white font-semibold px-6 py-1">
+              Sale
+            </p>
+          )}
         </div>
-      ))}
-      <ToastContainer
-        position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      </div>
+      <div className="w-full ddd px-2 py-4 flex h-[172px] flex-col gap-2">
+        <div>
+          <h2 className="font-titleFont text-sm font-semibold">
+            {item.title}
+          </h2>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="flex gap-2 text-sm relative transform group-hover:translate-x-32 transition-transform duration-500">
+            <p className="line-through text-gray-500">
+              {formatPrice(item.oldPrice)}
+            </p>
+            <p className="font-semibold">{formatPrice(item.newPrice)}</p>
+          </div>
+          <p
+            onClick={() =>
+              dispatch(
+                addToCart({
+                  _id: item._id,
+                  title: item.title,
+                  image: item.image,
+                  price: item.newPrice,
+                  Quantity: 1,
+                  description: item.description,
+                })
+              ) &
+              toast.success(
+                `${item.title.substring(0, 25)}... is added to the cart`
+              )
+            }
+            className="absolute addCart z-20 text-gray-500 hover:font-bold hover:text-gray-700 flex items-center gap-1 top-[-2.5px] transform translate-x-44 group-hover:translate-x-0 transition-transform duration-500 cursor-pointer"
+          >
+            Add to Cart
+            <span>
+              <FaArrowRightLong />
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
+  ))}
+  <ToastContainer
+    position="top-left"
+    autoClose={2000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="dark"
+  />
+</div>
+
+
+
   );
 };

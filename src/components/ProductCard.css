@@ -1,0 +1,57 @@
+.card-image {
+
+}
+
+@media (max-width : 640px) {
+    .card-image {
+width: 300px;
+transform: scale(1.1);
+    }
+    .card-image:hover {
+        transform: scale(1.1);
+
+    }
+
+    .card {
+        width: max-content;
+    }
+
+    .card-div {
+        width:450px;
+        padding: 10px;
+       
+        margin: auto;
+    }
+}
+
+
+@media (max-width : 550px) {
+    .card-image {
+        width: 280px!important;
+        transform: scale(1.1);
+            }
+            .card-image:hover {
+                transform: scale(1.1);
+        
+            }
+        
+            .card {
+                width: max-content;
+            }
+        
+            .card-div {
+                width: 330px!important;
+                padding: 10px;
+               
+                margin: auto;
+            }
+}
+
+@media (max-width :1325px) {
+    .addCart {
+        display: contents!important;
+    }
+    .ddd {
+        height: auto!important;
+    }
+}
