@@ -20,6 +20,9 @@ const Product = () => {
     setItem(location.state?.product || {});
   }, [location]);
 
+  console.log(location);
+  
+
   const handleAddToCart = (product) => {
     dispatch(addToCart({
       _id: product._id,

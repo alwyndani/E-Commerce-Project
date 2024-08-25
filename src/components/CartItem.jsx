@@ -19,6 +19,8 @@ const CartItem = () => {
   const dispatch = useDispatch();
 
   const productData = useSelector((state) => state.zen.productData);
+  console.log(productData);
+  
 
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 

@@ -9,8 +9,12 @@ export const Header = () => {
   const navigate = useNavigate();
   const formatPrice = (price) => `₹${price.toLocaleString()}`;
 
-  const userInfo = useSelector((state) => state.zen.userInfo);   //for displaying user login details in header 
-  const productData = useSelector((state) => state.zen.productData);  //for displaying cart length in header 
+  const userInfo = useSelector((state) => state.zen.userInfo);  
+  console.log(userInfo);
+   //for displaying user login details in header 
+  const productData = useSelector((state) => state.zen.productData);
+  console.log(productData);
+    //for displaying cart length in header 
   const products = useSelector((state) => state.zen.products); //for displaying best seller details in header 
   console.log(products);
   
