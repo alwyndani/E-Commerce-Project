@@ -5,6 +5,7 @@ import { github, google } from "../assets";
 import {
   getAuth,
   GoogleAuthProvider,
+  signInWithRedirect ,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -93,3 +94,5 @@ export const Login = () => {
     </div>
   );
 };
+
+
